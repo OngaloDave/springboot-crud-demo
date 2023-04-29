@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-
+    List<Product> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 }
+
