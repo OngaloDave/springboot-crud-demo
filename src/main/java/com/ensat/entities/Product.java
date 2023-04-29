@@ -22,9 +22,11 @@ public class Product {
 
     @Version
     private Integer version;
-
+    @NotBlank(message= "product ID cannot be blank")
     private String productId;
+    @NotBlank(message= "product name cannot be blank")
     private String name;
+    @NotBlank(message= "product price cannot be blank")
     private BigDecimal price;
     }
 
