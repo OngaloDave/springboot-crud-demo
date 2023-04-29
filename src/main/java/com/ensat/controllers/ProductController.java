@@ -76,10 +76,21 @@ public class ProductController {
      * @param product
      * @return
      */
-    @RequestMapping(value = "product", method = RequestMethod.POST)
-    public String saveProduct(Product product) {
-        productService.saveProduct(product);
-        return "redirect:/product/" + product.getId();
+   /**
+ * Save product to database.
+ *
+ * @param product
+ * @return
+ */
+@RequestMapping(value = "product", method = RequestMethod.POST)
+public String saveProduct(@Valid Product product, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        return "productform";
+    }
+    productService.saveProduct(product);
+    return "redirect:/product/" + product.getId();
+}
+
     }
 
     /**
